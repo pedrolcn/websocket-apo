@@ -5,6 +5,7 @@ class CreateMessage < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.string :content
       t.string :status
+      t.timestamps
     end
 
     add_foreign_key :messages, :chat_rooms
