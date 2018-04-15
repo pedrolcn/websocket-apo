@@ -10,8 +10,18 @@
       <tbody>
         <% @chatrooms.each do |room|%>
             <tr>
-            <th scope="row">1</th>
+            <th scope="row"><%= room.id %></th>
             <td><%= link_to room.topic, chat_room_path(room)%></td>
+            <td class='ml-auto' style='padding-right: 0 !important '>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%= link_to "delete", chat_room_path(room), {class: "dropdown-item", method: "delete"}%>
+                </div>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -19,4 +29,25 @@
   <% else %>
     <h2>There are no rooms to show :(</h2>
   <% end %>
+</div>
+
+<div class="modal fade" id="createChatRoomModal" tabindex="-1" role="dialog" aria-labelledby="createchatRoomModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create new chatroom</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_tag chat_rooms_path, method: 'post' do %>
+          <%= text_field_tag :topic %> 
+          <div class="modal-footer">
+            <%= submit_tag "create", {:class => 'mr-auto'}%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
