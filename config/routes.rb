@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root 'chat_rooms#index', as: :root
   resources :chat_rooms
+  resources :messages
 end
