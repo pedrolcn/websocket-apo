@@ -1,0 +1,22 @@
+<div class='container'>
+  <% unless @chatrooms.empty? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Chat room</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @chatrooms.each do |room|%>
+            <tr>
+            <th scope="row">1</th>
+            <td><%= link_to room.topic, chat_room_path(room)%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h2>There are no rooms to show :(</h2>
+  <% end %>
+</div>
