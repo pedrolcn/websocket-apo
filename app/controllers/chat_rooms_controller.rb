@@ -1,5 +1,6 @@
 class ChatRoomsController < ApplicationController
   before_action :set_chatroom, only: [:show, :destroy]
+  before_action :authenticate_user!, only: [:show]
 
   def index
     @chatrooms = ChatRoom.all
