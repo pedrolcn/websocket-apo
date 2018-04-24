@@ -6,13 +6,13 @@ class MessagesController < ApplicationController
     if message.save
       # do some stuff
     else 
-      redirect_to chatrooms_path
+      redirect_to chat_rooms_path
     end
   end
 
   private
 
     def message_params
-      params.require(:message).permit(:content, :chatroom_id)
+      params.require(:message).permit(:content, :chat_room_id)
     end
 end
