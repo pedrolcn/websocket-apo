@@ -4,7 +4,7 @@
     <div class="panel panel-default">
       <% if @chat_room.messages.any? %>
         <div class="panel-body" id="messages">
-          <%= render partial: 'messages/message', collection: @chatroom.messages%>
+          <%= render partial: 'messages/message', collection: @chat_room.messages%>
         </div>
       <%else%>
         <div class="panel-body hidden" id="messages">
@@ -14,3 +14,12 @@
     <%= render partial: 'messages/message_form', locals: {message: @message, chat_room: @chat_room}%>
   </div>
 </div>
+
+<script type='text/javascript'>
+  /*$("#message_content").keypress(function (e) {
+    if (e.which === 13) {
+      e.preventDefault()
+      $("#new_message").submit()
+    }
+  })*/
+</script>
